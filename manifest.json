@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "SoundCloud Repost Killer",
+  "version": "1.0",
+  "permissions": [
+  	"tabs", "<all_urls>"
+  ],
+  "browser_action": {
+    "default_icon": "images/logo.png",
+    "default_popup": "KillerPopup.html",
+    "default_title": "Killing"
+  },
+  "icons": { 
+    "16":"images/icon-16.png", 
+    "48":"images/icon-48.png", 
+    "128":"images/icon-128.png" 
+  },
+  "background": {
+  	"persistent": false,
+  	"scripts": ["jquery.min.js", "background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["jquery.min.js", "content.js"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": ["popup.js", "content.js"]
+}
